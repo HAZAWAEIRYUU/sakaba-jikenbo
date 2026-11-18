@@ -1,0 +1,120 @@
+:root{
+  /* 夜の酒場の壁。演目は壁に下がる短冊、秘密は一枚の紙で届く。朱は「押すところ」と「極秘」だけ。 */
+  --ai:#15223d;
+  --ai-deep:#0d162b;
+  --ai-line:#2b3b60;
+  --kami:#f3eee2;
+  --sumi:#1a1a1e;
+  --shu:#e04a2c;
+  --kin:#d8a548;
+  --usu:#aab4cc;
+  --font-display:"Dela Gothic One","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --font-body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--ai-deep);color:var(--kami);font-family:var(--font-body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+input{font:inherit}
+button:focus-visible,input:focus-visible{outline:3px solid var(--kin);outline-offset:2px}
+.app{max-width:520px;margin:0 auto;min-height:100%;background:var(--ai);display:flex;flex-direction:column}
+main{padding:22px 20px 40px;display:flex;flex-direction:column;gap:20px;flex:1}
+h1{font-family:var(--font-display);font-weight:400;font-size:36px;line-height:1.25;text-wrap:balance}
+h2{font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.3;text-wrap:balance}
+h3{font-size:14px;font-weight:700;color:var(--kin);letter-spacing:.08em}
+.lead{color:var(--usu);font-size:15px}
+.sec{display:flex;flex-direction:column;gap:10px}
+.bar-top{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:700;color:var(--usu);border-bottom:1px solid var(--ai-line);padding-bottom:8px}
+
+/* 入力 */
+input[type=text]{width:100%;background:var(--ai-deep);border:2px solid var(--ai-line);border-radius:10px;color:var(--kami);padding:13px 14px;font-size:18px}
+input::placeholder{color:#6f7b99}
+.inline{display:flex;gap:10px}
+.inline input{flex:1;min-width:0;text-transform:uppercase;letter-spacing:.2em}
+.inline button{white-space:nowrap}
+
+/* ボタン */
+.go{background:var(--shu);color:#fff;font-weight:700;font-size:18px;padding:16px 20px;border-radius:10px;width:100%;box-shadow:0 4px 0 #9d2f1a}
+.go:active{transform:translateY(3px);box-shadow:0 1px 0 #9d2f1a}
+.go:disabled{background:var(--ai-line);color:var(--usu);box-shadow:none;cursor:not-allowed}
+.ghost{border:2px solid var(--ai-line);padding:11px 16px;border-radius:10px;font-weight:700;font-size:15px}
+
+/* 招待 */
+.invite{display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:var(--ai-deep);border-radius:10px;padding:16px}
+.qr{background:#fff;border-radius:8px;line-height:0;padding:0}
+.qr svg{display:block;width:170px;height:170px}
+.code{font-family:var(--font-display);font-size:44px;line-height:1.1;letter-spacing:.12em;color:var(--kin)}
+.url{font-size:12px;color:var(--usu);overflow-wrap:anywhere;margin-top:6px}
+
+/* 参加者 */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:2px solid var(--ai-line);font-size:15px;font-weight:700;overflow-wrap:anywhere}
+.chip.me{background:var(--kami);color:var(--sumi);border-color:var(--kami)}
+.chip i{font-style:normal;font-size:11px;color:var(--kin);border:1px solid currentColor;border-radius:4px;padding:0 5px}
+.chip.me i{color:var(--shu)}
+.chip button{width:24px;height:24px;border-radius:50%;background:var(--ai-line);font-size:14px;line-height:1}
+
+/* 壁の短冊（演目えらび） */
+.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-top:6px solid var(--ai-deep)}
+.strip{background:var(--kami);color:var(--sumi);min-height:290px;border-radius:0 0 4px 4px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:0 4px 12px;box-shadow:0 8px 0 rgba(0,0,0,.25);opacity:.55}
+.strip::before{content:"";display:block;height:10px;background:#8d877a;align-self:stretch;margin:0 -4px}
+.strip[aria-pressed="true"]{opacity:1}
+.strip[aria-pressed="true"]::before{background:var(--shu)}
+.strip .ttl{writing-mode:vertical-rl;font-family:var(--font-display);font-size:23px;letter-spacing:.14em;line-height:1.1;padding:14px 0}
+.strip .meta{font-size:12px;font-weight:700;text-align:center;line-height:1.45;color:#55524b}
+.menu{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+.menu b{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:16px}
+.menu b i{font-style:normal;font-size:12px;color:var(--kin);font-weight:700}
+.menu span{font-size:14px;color:var(--usu);display:block;line-height:1.6}
+
+/* 説明の箱 */
+.box{font-size:15px;background:var(--ai-deep);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.box ol,.box ul{padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+.note{font-size:13px;color:var(--usu);border-left:3px solid var(--ai-line);padding-left:12px}
+.err{font-size:14px;font-weight:700;background:#4a1d15;border-left:4px solid var(--shu);padding:10px 12px;border-radius:4px}
+.count{font-size:14px;font-weight:700;color:var(--kin);font-variant-numeric:tabular-nums}
+
+/* 極秘の紙 */
+.paper{position:relative;background:var(--kami);color:var(--sumi);border-radius:4px;padding:24px 20px 24px 60px;display:flex;flex-direction:column;gap:12px;box-shadow:0 10px 0 rgba(0,0,0,.25);min-height:220px;justify-content:center}
+.paper .side{position:absolute;left:0;top:0;bottom:0;width:42px;background:var(--shu);color:#fff;writing-mode:vertical-rl;text-align:center;font-family:var(--font-display);font-size:16px;line-height:42px;letter-spacing:.3em;border-radius:4px 0 0 4px}
+.paper .role{font-family:var(--font-display);font-size:27px;line-height:1.3}
+.paper .key{font-size:21px;font-weight:700;line-height:1.5;border-left:4px solid var(--shu);padding-left:12px}
+.paper p{font-size:15px;line-height:1.65}
+.paper small{font-size:13px;color:#66625a;line-height:1.6;display:block}
+
+/* 選ぶ */
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.people button{background:var(--ai-deep);border:2px solid var(--ai-line);font-weight:700;font-size:16px;padding:12px 10px;border-radius:8px;overflow-wrap:anywhere}
+.people button[aria-pressed="true"]{background:var(--kami);color:var(--sumi);border-color:var(--kami)}
+.words{display:flex;flex-wrap:wrap;gap:8px}
+.words span,.words button{background:var(--ai-deep);border:2px solid var(--ai-line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:15px;text-align:left}
+.words button[aria-pressed="true"]{background:var(--kami);color:var(--sumi);border-color:var(--kami)}
+
+/* 表 */
+.tablewrap{overflow-x:auto;border-radius:8px}
+table{width:100%;border-collapse:collapse;background:var(--kami);color:var(--sumi);font-size:15px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid #d9d2c1;white-space:nowrap}
+th{font-size:12px;color:#66625a;letter-spacing:.08em}
+td:first-child{font-weight:700;white-space:normal;overflow-wrap:anywhere}
+td.wrap{white-space:normal}
+tr.hit td{background:#f6d5cc}
+.win{color:#1e7a46;font-weight:700}
+.lose{color:#9d2f1a;font-weight:700}
+
+.timer{display:flex;align-items:center;gap:14px;background:var(--ai-deep);border-radius:8px;padding:10px 16px}
+.timer output{font-family:var(--font-display);font-size:34px;font-variant-numeric:tabular-nums;min-width:110px}
+.timer.done output{color:var(--shu)}
+.verdict{font-family:var(--font-display);font-size:30px;line-height:1.3;color:var(--kin);text-wrap:balance}
+.bar{display:grid;grid-template-columns:minmax(80px,30%) 1fr 28px;gap:10px;align-items:center;font-size:15px}
+.bar i{display:block;height:14px;background:var(--kin);border-radius:3px;min-width:2px}
+.bar b{font-variant-numeric:tabular-nums;text-align:right}
+.bar span{overflow-wrap:anywhere}
+footer{padding:16px 20px 28px;font-size:12px;color:var(--usu);text-align:center}
+@media (max-width:400px){
+  h1{font-size:30px}
+  .strip{min-height:270px}
+  .strip .ttl{font-size:20px}
+  .paper .role{font-size:23px}
+  .qr svg{width:150px;height:150px}
+}
